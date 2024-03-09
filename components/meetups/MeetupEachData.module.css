@@ -1,0 +1,13 @@
+.box {
+  height: 100vh;
+  text-align: center;
+}
+.box img {
+  border: 5px solid black;
+  height: 600px;
+  width: fit-content;
+  margin-right: 50px;
+}
+.box p {
+  font-size: larger;
+}
