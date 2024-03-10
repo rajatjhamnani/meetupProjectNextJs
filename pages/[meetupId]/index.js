@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { MongoClient } from "mongodb";
+import Head from "next/head";
 import MeetupEachData from "../../components/meetups/MeetupEachData";
 
 const DetailPage = (meetups) => {
@@ -18,11 +19,14 @@ const DetailPage = (meetups) => {
   // }
 
   return (
-    <MeetupEachData selectedMeetup={selectedMeetup} />
-    /* <img src={selectedMeetup.image} alt={selectedMeetup.title} />
-      <h1>{selectedMeetup.title}</h1>
-      <p>{selectedMeetup.address}</p>
-      <p>{selectedMeetup.description}</p> */
+    <>
+      {" "}
+      <Head>
+        <title>{selectedMeetup.title}</title>
+        <meta name="description" content="{selectedMeetup.description}" />
+      </Head>
+      <MeetupEachData selectedMeetup={selectedMeetup} />
+    </>
   );
 };
 export async function getStaticPaths() {
@@ -59,6 +63,7 @@ export async function getStaticProps(context) {
         address: meetup.address,
         image: meetup.image,
         id: meetup._id.toString(),
+        description: meetup.description,
       })),
     },
   };

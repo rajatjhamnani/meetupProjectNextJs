@@ -1,4 +1,5 @@
 import NewMeetupForm from "../../components/meetups/NewMeetupForm";
+import Head from "next/head";
 const NewMeetUpPage = () => {
   const addMeetUpHandler = async (enteredMeetUpData) => {
     console.log(enteredMeetUpData);
@@ -17,6 +18,17 @@ const NewMeetUpPage = () => {
       console.log(err.message);
     }
   };
-  return <NewMeetupForm onAddMeetup={addMeetUpHandler} />;
+  return (
+    <>
+      <Head>
+        <title>Add a new meetup</title>
+        <meta
+          name="description"
+          content="Add your own meet ups and create amazing networking opportunities"
+        />
+      </Head>
+      <NewMeetupForm onAddMeetup={addMeetUpHandler} />;
+    </>
+  );
 };
 export default NewMeetUpPage;
